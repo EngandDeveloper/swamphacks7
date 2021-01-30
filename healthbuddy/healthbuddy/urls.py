@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from farms.views import index, login, register 
+from farms.views import index, loginPage, registerPage, loginUser , registerUser, logoutUser
 
 urlpatterns = [
     path('', index, name='index'),
-    path('login/', login, name='login'),
-    path('register/', register, name='register'),
+    path('login/', loginPage, name='login'),
+    path('register/', registerPage, name='register'),
+    path('loginUser/', loginUser, name='loginUser'),
+    path('logoutUser/', logoutUser, name='logoutUser'),
+    path('registerUser/', registerUser, name='registerUser'),
     path('farms/', include('farms.urls')),
     path('admin/', admin.site.urls),
 ]
