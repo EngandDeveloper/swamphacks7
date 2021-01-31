@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-<<<<<<< HEAD
-=======
-#sa
->>>>>>> main
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
