@@ -18,11 +18,11 @@ def index(request):
     gymbuddies = []
     for i in users:
         if i.userType == "Personal Trainer":
-            trainers.append(i.user.username)
+            trainers.append(i)
         elif i.userType == "Babysitter":
-            babysitters.append(i.user.username)
+            babysitters.append(i)
         elif i.userType == "Gym Buddy":
-            gymbuddies.append(i.user.username)
+            gymbuddies.append(i)
     print("trainers - ", trainers, " babysitters", babysitters, "gymbuddies", gymbuddies)
     context = {'trainers': trainers, 'babysitters': babysitters, 'gymbuddies': gymbuddies}
     return render(request, 'farms/index.html', context)
@@ -119,5 +119,13 @@ def userProfile(request):
     return render(request, 'farms/userProfile.html', context)
 
 def seeUser(request):
-    context = {}
+    username = request.POST.get("username")
+    usertype = request.POST.get('usertype')
+    city = request.POST.get('city')
+    experience = request.POST.get('experience')
+    age = request.POST.get('age')
+    gender = request.POST.get('gender')
+    communication = request.POST.get('communication')
+    context = {'username':username, 'usertype': usertype, 'city':city, 'experience': experience,
+    'age': age, 'gender': gender, 'communication': communication}
     return render(request, 'farms/seeProfile.html', context)

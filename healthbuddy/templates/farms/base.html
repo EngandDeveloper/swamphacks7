@@ -46,14 +46,19 @@
         <p>Hello {{request.user}}</p>
         <a href="{% url 'logoutUser' %}">Logout</a>
         <form action="/login/" method="POST" id="loginButton">
-            {% csrf_token %} 
-            <input type="submit" name="loginButton" id="loginButton" value="login">
-        </form>
-        
-        <form action="/register/" method="POST" id="registerButton">
-            {% csrf_token %} 
-            <input type="submit" name="registerButton" id="registerButton" value="register">
-        </form>
+          {% csrf_token %} 
+          <input type="submit" name="loginButton" id="loginButton" value="login">
+      </form>
+  
+      <form action="/register/" method="POST" id="registerButton">
+          {% csrf_token %} 
+          <input type="submit" name="registerButton" id="registerButton" value="register">
+      </form>
+  
+      <form action="/userProfile/" method="POST" id="registerButton">
+          {% csrf_token %} 
+          <input type="submit" name="profileButton" id="profileButton" value="profile">
+      </form>
         <div class="header">
         <div class="topnav">
             <a class="active" href="{% url 'home' %}">Home</a>

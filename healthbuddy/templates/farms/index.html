@@ -9,21 +9,51 @@
   <div class="row">
     <div class="column">
       <h2>Gym Buddies</h2>
-      {% for member in gymbuddies %}
-        <a>member.username</a>
+      {% for t in gymbuddies %}
+        <form action="/seeUser/" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="username" value={{t.user.username}}>
+          <input type="hidden" name="city" value={{t.city}}>
+          <input type="hidden" name="experience" value={{t.experience}}>
+          <input type="hidden" name="usertype" value={{t.userType}}>
+          <input type="hidden" name="age" value={{t.age}}>
+          <input type="hidden" name="gender" value={{t.gender}}>
+          <input type="hidden" name="communication" value={{t.communication}}>
+          <input type="submit" value={{t.user.username}}>
+        </form>
       {% endfor %}
     </div>
     
     <div class="column">
       <h2>Babysitters</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+      {% for t in babysitters %}
+      <form action="/seeUser/" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="username" value={{t.user.username}}>
+        <input type="hidden" name="city" value={{t.city}}>
+        <input type="hidden" name="experience" value={{t.experience}}>
+        <input type="hidden" name="usertype" value={{t.userType}}>
+        <input type="hidden" name="age" value={{t.age}}>
+        <input type="hidden" name="gender" value={{t.gender}}>
+        <input type="hidden" name="communication" value={{t.communication}}>
+        <input type="submit" value={{t.user.username}}>
+      </form>
+    {% endfor %}
     </div>
     
     <div class="column">
       <h2>Personal Trainers</h2>
       {% for t in trainers %}
         <form action="/seeUser/" method="POST">
-          <input type="submit" value={{t}}>
+          {% csrf_token %}
+          <input type="hidden" name="username" value={{t.user.username}}>
+          <input type="hidden" name="city" value={{t.city}}>
+          <input type="hidden" name="experience" value={{t.experience}}>
+          <input type="hidden" name="usertype" value={{t.userType}}>
+          <input type="hidden" name="age" value={{t.age}}>
+          <input type="hidden" name="gender" value={{t.gender}}>
+          <input type="hidden" name="communication" value={{t.communication}}>
+          <input type="submit" value={{t.user.username}}>
         </form>
       {% endfor %}
     </div>
@@ -37,9 +67,7 @@
     </iframe>     -->
 
 
-    INDEX PAGE - EXTENDED
-
-    <form action="/login/" method="POST" id="loginButton">
+    <!-- <form action="/login/" method="POST" id="loginButton">
         {% csrf_token %} 
         <input type="submit" name="loginButton" id="loginButton" value="login">
     </form>
@@ -52,7 +80,7 @@
     <form action="/userProfile/" method="POST" id="registerButton">
         {% csrf_token %} 
         <input type="submit" name="profileButton" id="profileButton" value="profile">
-    </form>
+    </form> -->
 
     <!-- Gym Buddies in yout city -->
 
