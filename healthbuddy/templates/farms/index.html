@@ -22,6 +22,11 @@
         <input type="submit" name="registerButton" id="registerButton" value="register">
     </form>
 
+    <form action="/userProfile/" method="POST" id="registerButton">
+        {% csrf_token %} 
+        <input type="submit" name="profileButton" id="profileButton" value="profile">
+    </form>
+
     <!-- Gym Buddies in yout city -->
 
     <!-- Personal Trainers in yout city -->

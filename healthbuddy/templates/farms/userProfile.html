@@ -2,4 +2,26 @@
 
 {% block body %}
 
-{% end block %}
+    <p>Username: {{request.user}}</p>
+    <p>Email: {{request.user.email}}</p>
+    <p></p>
+
+    <h2>Update Info</h2>
+    <form action="/updateInfo/" method="POST">
+        {% csrf_token %}
+        <select id="userType" name="userType" class="dropdown">
+            <option>Personal Trainer</option>
+            <option>Babysitter</option>
+            <option>Gym Buddy</option>
+        </select>
+
+        <input type="text" placeholder="City" name="city">
+        <input type="text" placeholder="Experience" name="experience">
+        <input type="number" placeholder="Age" name="age">
+        <input type="text" placeholder="Gender" name="gender">
+        <input type="text" placeholder="Communication Method (e.g. Instagram, Twitter username etc.)" name="communication">
+
+        <input type="submit" value="Update">
+    </form>
+
+{% endblock %}

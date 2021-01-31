@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from farms.views import index, loginPage, registerPage, loginUser , registerUser, logoutUser
+from farms.views import *
 
 urlpatterns = [
     path('', index, name='index'),
@@ -24,6 +24,8 @@ urlpatterns = [
     path('loginUser/', loginUser, name='loginUser'),
     path('logoutUser/', logoutUser, name='logoutUser'),
     path('registerUser/', registerUser, name='registerUser'),
+    path('userProfile/', userProfile, name='userProfile'),
+    path('updateInfo/', updateProfile, name="updateInfo"),
     path('farms/', include('farms.urls')),
     path('admin/', admin.site.urls),
 ]
