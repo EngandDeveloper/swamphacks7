@@ -9,6 +9,7 @@ class RegisterUser(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
+<<<<<<< HEAD
 class Trainer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     city = models.CharField(max_length=60, null=True, blank=True)
@@ -46,3 +47,13 @@ class GymMember(models.Model):
 
     # def __str__(self):
     #     return self.user
+=======
+class Trainer():
+    print()
+
+class Babysitter():
+    print()
+
+class GymMember():
+    print()
+>>>>>>> main
