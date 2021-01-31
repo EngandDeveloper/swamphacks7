@@ -3,6 +3,9 @@
 <html lang="en">
 
 <head>
+<<<<<<< HEAD
+
+=======
     <style>
         body {
           margin: 0;
@@ -33,6 +36,7 @@
           color: white;
         }
         </style>
+>>>>>>> main
     
 
 </head>
@@ -44,6 +48,8 @@
 
         <p>Hello {{request.user}}</p>
         <a href="{% url 'logoutUser' %}">Logout</a>
+<<<<<<< HEAD
+=======
         <form action="/login/" method="POST" id="loginButton">
             {% csrf_token %} 
             <input type="submit" name="loginButton" id="loginButton" value="login">
@@ -62,6 +68,7 @@
           </div>
           
           
+>>>>>>> main
 
     </header>
 

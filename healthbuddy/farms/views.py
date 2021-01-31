@@ -3,9 +3,17 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+<<<<<<< HEAD
+# from geopy.geocoders import Nominatim
+
+#form imports
+from farms.models import *
+# from farms.utils import get_geo, get_center_coordinates, get_zoom
+=======
 
 #form imports
 from farms.models import RegisterUser
+>>>>>>> main
 
 # Create your views here.
 def index(request):
@@ -27,7 +35,11 @@ def loginUser(request):
             login(request, user)
             print("loginPage view - " + username + " logged in")
             #redirect user to profile page or somewhere
+<<<<<<< HEAD
+            return render(request, 'farms/userProfile.html',context)
+=======
             return render(request, 'farms/index.html',context)
+>>>>>>> main
         else:
             messages.info(request, "Username OR password is incorrect")
             # return render(request, 'farms/login.html', context)
@@ -50,7 +62,11 @@ def registerUser(request):
             form.save()
             print("register view.py - User is registered!")
             context = {'form':form}
+<<<<<<< HEAD
+            return render(request, 'farms/userProfile.html', context)
+=======
             return render(request, 'farms/login.html', context)
+>>>>>>> main
         else:
             messages.info(request, "An Error Occured! Account Has NOT Been Created.")
     #object to use backend data in html page
@@ -63,3 +79,38 @@ def registerPage(request):
     context = {'form':form}
     #renders html file and sends context info to html page
     return render(request, 'farms/register.html', context)
+<<<<<<< HEAD
+
+def updateProfile(request):
+    if request.method == "POST":
+        usertype = request.POST.get('userType')
+        print("userType updateProfile view - ", usertype)
+        city = request.POST.get('city')
+        experience = request.POST.get('experience')
+        age = request.POST.get('age')
+        gender = request.POST.get('gender')
+        communication = request.POST.get('communication')
+        if usertype == "Personal Trainer":
+            form = Trainer(user=request.user, city=city, experience=experience, age=age, gender=gender, communication=communication)
+            form.save()
+            print("form saved and Trainer is:", Trainer)
+        elif usertype == "Babysitter":
+            form = Babysitter(user=request.user, city=city, experience=experience, age=age, gender=gender, communication=communication)
+            form.save()
+        elif usertype == "Gym Buddy":
+            form = GymMember(user=request.user, city=city, age=age, gender=gender, communication=communication)
+            form.save()
+    return render(request, 'farms/userProfile.html')
+
+def userProfile(request):
+    username = request.user
+    trainer = Trainer.objects.get(user=username)
+    city = trainer.city
+    context = {'username':username, 'city':city}
+    if city != None:
+        print("userProfile view - username: ", username, " city: ", city)
+    else:
+        print("username view is - ", username)
+    return render(request, 'farms/userProfile.html')
+=======
+>>>>>>> main

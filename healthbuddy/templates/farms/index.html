@@ -2,6 +2,8 @@
 
 {% block body %}
 
+<<<<<<< HEAD
+=======
     
     
   </div>
@@ -23,6 +25,7 @@
     </div>
   </div>
 
+>>>>>>> main
     <iframe
     width="600"
     height="450"
@@ -31,6 +34,28 @@
     </iframe>    
 
 
+<<<<<<< HEAD
+    INDEX PAGE - EXTENDED
+
+    <form action="/login/" method="POST" id="loginButton">
+        {% csrf_token %} 
+        <input type="submit" name="loginButton" id="loginButton" value="login">
+    </form>
+
+    <form action="/register/" method="POST" id="registerButton">
+        {% csrf_token %} 
+        <input type="submit" name="registerButton" id="registerButton" value="register">
+    </form>
+
+    <form action="/userProfile/" method="POST" id="registerButton">
+        {% csrf_token %} 
+        <input type="submit" name="profileButton" id="profileButton" value="profile">
+    </form>
+
+    <!-- Gym Buddies in yout city -->
+
+    <!-- Personal Trainers in yout city -->
+=======
     <style>
         * {
           box-sizing: border-box;
@@ -94,5 +119,6 @@
     
 
     
+>>>>>>> main
 
 {% endblock %}
