@@ -4,9 +4,15 @@
 
     <p>Username: {{request.user}}</p>
     <p>Email: {{request.user.email}}</p>
-    <p></p>
+    <p>User Type: {{usertype}}</p>
+    <p>City: {{city}}</p>
+    <p>Experience: {{experience}} years</p>
+    <p>Age: {{age}}</p>
+    <p>Gender: {{gender}}</p>
+    <p>Communication Info: {{communication}}</p>
 
-    <h2>Update Info</h2>
+
+    <!-- <h2>Update Info</h2>
     <form action="/updateInfo/" method="POST">
         {% csrf_token %}
         <select id="userType" name="userType" class="dropdown">
@@ -22,6 +28,6 @@
         <input type="text" placeholder="Communication Method (e.g. Instagram, Twitter username etc.)" name="communication">
 
         <input type="submit" value="Update">
-    </form>
+    </form> -->
 
 {% endblock %}

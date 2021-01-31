@@ -9,7 +9,9 @@
   <div class="row">
     <div class="column">
       <h2>Gym Buddies</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+      {% for member in gymbuddies %}
+        <a>member.username</a>
+      {% endfor %}
     </div>
     
     <div class="column">
@@ -19,16 +21,20 @@
     
     <div class="column">
       <h2>Personal Trainers</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+      {% for t in trainers %}
+        <form action="/seeUser/" method="POST">
+          <input type="submit" value={{t}}>
+        </form>
+      {% endfor %}
     </div>
   </div>
 
-    <iframe
+    <!-- <iframe
     width="600"
     height="450"
     frameborder="0" style="border:0"
     src="https://www.google.com/maps/embed/v1/place?key=API_KEY&q=New York" allowfullscreen>
-    </iframe>    
+    </iframe>     -->
 
 
     INDEX PAGE - EXTENDED

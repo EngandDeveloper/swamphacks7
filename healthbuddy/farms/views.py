@@ -11,7 +11,21 @@ from farms.models import *
 
 # Create your views here.
 def index(request):
-    return render(request, 'farms/index.html')
+    users = Trainer.objects.all()
+    print("index - ", users)
+    trainers = []
+    babysitters = []
+    gymbuddies = []
+    for i in users:
+        if i.userType == "Personal Trainer":
+            trainers.append(i.user.username)
+        elif i.userType == "Babysitter":
+            babysitters.append(i.user.username)
+        elif i.userType == "Gym Buddy":
+            gymbuddies.append(i.user.username)
+    print("trainers - ", trainers, " babysitters", babysitters, "gymbuddies", gymbuddies)
+    context = {'trainers': trainers, 'babysitters': babysitters, 'gymbuddies': gymbuddies}
+    return render(request, 'farms/index.html', context)
 
 #TODO: Might need to make the form in another view and use the login as changing the page
 def loginPage(request):
@@ -29,7 +43,7 @@ def loginUser(request):
             login(request, user)
             print("loginPage view - " + username + " logged in")
             #redirect user to profile page or somewhere
-            return render(request, 'farms/userProfile.html',context)
+            return render(request, 'farms/userProfileRegister.html',context)
         else:
             messages.info(request, "Username OR password is incorrect")
             # return render(request, 'farms/login.html', context)
@@ -52,7 +66,7 @@ def registerUser(request):
             form.save()
             print("register view.py - User is registered!")
             context = {'form':form}
-            return render(request, 'farms/userProfile.html', context)
+            return render(request, 'farms/login.html', context)
         else:
             messages.info(request, "An Error Occured! Account Has NOT Been Created.")
     #object to use backend data in html page
@@ -75,25 +89,35 @@ def updateProfile(request):
         age = request.POST.get('age')
         gender = request.POST.get('gender')
         communication = request.POST.get('communication')
-        if usertype == "Personal Trainer":
-            form = Trainer(user=request.user, city=city, experience=experience, age=age, gender=gender, communication=communication)
-            form.save()
-            print("form saved and Trainer is:", Trainer)
-        elif usertype == "Babysitter":
-            form = Babysitter(user=request.user, city=city, experience=experience, age=age, gender=gender, communication=communication)
-            form.save()
-        elif usertype == "Gym Buddy":
-            form = GymMember(user=request.user, city=city, age=age, gender=gender, communication=communication)
-            form.save()
+        # if usertype == "Personal Trainer":
+        form = Trainer(user=request.user, userType=usertype, city=city, experience=experience, age=age, gender=gender, communication=communication)
+        form.save()
+        print("form saved and Trainer is:", Trainer)
+        # elif usertype == "Babysitter":
+        #     form = Babysitter(user=request.user, city=city, experience=experience, age=age, gender=gender, communication=communication)
+        #     form.save()
+        # elif usertype == "Gym Buddy":
+        #     form = GymMember(user=request.user, city=city, age=age, gender=gender, communication=communication)
+        #     form.save()
     return render(request, 'farms/userProfile.html')
 
 def userProfile(request):
     username = request.user
     trainer = Trainer.objects.get(user=username)
+    usertype = trainer.userType
     city = trainer.city
-    context = {'username':username, 'city':city}
+    experience = trainer.experience
+    age = trainer.age
+    gender = trainer.gender
+    communication = trainer.communication
+    context = {'username':username, 'usertype': usertype, 'city':city, 'experience': experience,
+    'age': age, 'gender': gender, 'communication': communication}
     if city != None:
-        print("userProfile view - username: ", username, " city: ", city)
+        print("userProfile view - username: ", username, "usertype", usertype, " city: ", city)
     else:
         print("username view is - ", username)
-    return render(request, 'farms/userProfile.html')
+    return render(request, 'farms/userProfile.html', context)
+
+def seeUser(request):
+    context = {}
+    return render(request, 'farms/seeProfile.html', context)

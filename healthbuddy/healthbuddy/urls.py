@@ -20,12 +20,14 @@ from farms.views import *
 urlpatterns = [
     path('', index, name='index'),
     path('login/', loginPage, name='login'),
+    path('home', index, name='home'),
     path('register/', registerPage, name='register'),
     path('loginUser/', loginUser, name='loginUser'),
     path('logoutUser/', logoutUser, name='logoutUser'),
     path('registerUser/', registerUser, name='registerUser'),
     path('userProfile/', userProfile, name='userProfile'),
     path('updateInfo/', updateProfile, name="updateInfo"),
+    path('seeUser/', seeUser, name='seeUser'),
     path('farms/', include('farms.urls')),
     path('admin/', admin.site.urls),
 ]
