@@ -3,17 +3,11 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-<<<<<<< HEAD
 # from geopy.geocoders import Nominatim
 
 #form imports
 from farms.models import *
 # from farms.utils import get_geo, get_center_coordinates, get_zoom
-=======
-
-#form imports
-from farms.models import RegisterUser
->>>>>>> main
 
 # Create your views here.
 def index(request):
@@ -35,11 +29,7 @@ def loginUser(request):
             login(request, user)
             print("loginPage view - " + username + " logged in")
             #redirect user to profile page or somewhere
-<<<<<<< HEAD
             return render(request, 'farms/userProfile.html',context)
-=======
-            return render(request, 'farms/index.html',context)
->>>>>>> main
         else:
             messages.info(request, "Username OR password is incorrect")
             # return render(request, 'farms/login.html', context)
@@ -62,11 +52,7 @@ def registerUser(request):
             form.save()
             print("register view.py - User is registered!")
             context = {'form':form}
-<<<<<<< HEAD
             return render(request, 'farms/userProfile.html', context)
-=======
-            return render(request, 'farms/login.html', context)
->>>>>>> main
         else:
             messages.info(request, "An Error Occured! Account Has NOT Been Created.")
     #object to use backend data in html page
@@ -79,7 +65,6 @@ def registerPage(request):
     context = {'form':form}
     #renders html file and sends context info to html page
     return render(request, 'farms/register.html', context)
-<<<<<<< HEAD
 
 def updateProfile(request):
     if request.method == "POST":
@@ -112,5 +97,3 @@ def userProfile(request):
     else:
         print("username view is - ", username)
     return render(request, 'farms/userProfile.html')
-=======
->>>>>>> main
